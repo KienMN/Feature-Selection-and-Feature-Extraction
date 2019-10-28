@@ -3,13 +3,12 @@ import numpy as np
 
 class RBM():
   """Restricted Boltzmann Machine."""
-  def __init__(self, n_visible, n_hidden, cd_steps=3):
+  def __init__(self, n_visible, n_hidden):
     self._n_visible = n_visible
     self._n_hidden = n_hidden
     self._weights = tf.Variable(tf.random.normal([self._n_visible, self._n_hidden]) * 0.01)
     self._bias_visible = tf.Variable(tf.zeros([self._n_visible, 1]))
     self._bias_hidden = tf.Variable(tf.zeros([self._n_hidden, 1]))
-    self._cd_steps = cd_steps
 
   def sample_bernoulli(self, probabilities):
     """Sampling based on bernoulli distribution."""
